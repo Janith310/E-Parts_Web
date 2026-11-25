@@ -87,3 +87,25 @@ search_grid{
     margin-bottom:8px;
     color:var(--primary);
 }
+
+.hint{display:box; margin-top:6px; color:var(--muted); font-size:0.8rem}
+
+.divider span{
+    background:var(--bg);
+    border:1px solid var(--border);
+    color:var(--muted);
+    font-size:0.75rem;
+    font-weight:700;
+    padding:6px 10px;
+    border-radius:999px;
+}
+
+input[type="text"], select{
+    width:100%;
+    padding:10px 12px;
+    border: 1px solid var(--border);
+    border-radius:6px;
+    font-size:0.95rem;
+    background:#fff;
+    color:var(--text);
+}
