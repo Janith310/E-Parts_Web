@@ -1,8 +1,40 @@
 <!DOCTYPE html>
-<hrtml lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initia-scale=1.0">
     <title>ChassisFit - Accurate Spare Parts Catalog</title>
-    <link rel="stylesheet" href="New Folder/CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
 </head>
+
+<body> 
+    <header class="TopBar">
+        <div class="container TopBar_inner">
+            <div class="brand">
+                <span class="brand_logo">OEM</span>
+                <h1>ChassisFit<span>Parts FInder</span></h1>
+            </div>
+            <p class="cross_fit">Verify exact vehicle fitment by chassis/frame code</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="search_panel">
+            <div class="search_grid">
+                <div class="search_box">
+                    <label for="chassisInput">01. Direct Chassis / Frame Code Search</label>
+                    <div class="autocomplete_wrapper">
+                        <input
+                            type="text"
+                            id="chassisInput"
+                            placeholder="e.g. VRGE24, LN85, SB14, DA64 or FB15-12983..."
+                            autocomplete="off"
+                        >
+                        <div id="autocompleteList" class="autocomplete_dropdown hidden"></div>
+                    </div>
+                    <small class="hint">Supports exact chjassis codes or full Japanese frame numbers.</small>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>

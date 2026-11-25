@@ -4,3 +4,24 @@ body{
     color: var(--text);
     line-height: 1.5;
 }
+
+.container{
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.TopBar{
+    background: var(--primary);
+    color: #fff;
+    padding: 18px 0;
+    border-bottom: 3px solid var(--accent);
+}
+
+TopBar_inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
