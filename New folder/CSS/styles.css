@@ -141,3 +141,16 @@ select:disabled{background:#f8fafc; color:#94a3b8; cursor:not-allowed;}
     max-height:260px;
     overflow-y:auto;
 }
+
+.autocomplete-item{
+    padding:10px 14px;
+    cursor:pointer;
+    border-bottom:1px solid #f1f5f9;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.autocomplete-item:hover{background:#eff6ff}
+.autocomplete-item strong{color:var(--accent);}
+.autocomplete-item span{font-size:0.90rem}
