@@ -109,3 +109,35 @@ input[type="text"], select{
     background:#fff;
     color:var(--text);
 }
+
+input[type="text"]:focus, select:focus{
+    outline:none;
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px rgba(37,99,235,0.15);
+}
+
+select:disabled{background:#f8fafc; color:#94a3b8; cursor:not-allowed;}
+
+.dropdown-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.autocomplete-wrapper{
+    position:relative;
+}
+
+.autocomplete-dropdown{
+    position:absolute;
+    top:calc(100%+4px);
+    left:0;
+    right:0;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:6px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    z-index:50;
+    max-height:260px;
+    overflow-y:auto;
+}
