@@ -67,7 +67,34 @@
                 </div>
                 <div class="category_filters">
                     <label for="categorySelect">Filter category</label>
+                    <select id="categorySelect">
+                        <option value="All">All Categories</option>
+                        <option value="Filters">Filters</option>
+                        <option value="Brakes">Brakes</option>
+                        <option value="Suspension">Suspension</option>
+                        <option value="Engine">Engine</option>
+                        <option value="Electrical">Electrical</option>
+                        <option value="Cooling">Cooling System</option>
+                        <option value="Drivetrain">Drivetrain</option>
+                    </select>
                 </div>
+            </div>
+
+            <div class="table_wrapper">
+                <table class="parts_table">
+                    <thead>
+                        <tr>
+                            <th>OEM / Part No.</th>
+                            <th>Part Description</th>
+                            <th>Category</th>
+                            <th>Brand</th>
+                            <th>Fitment Notes</th>
+                            <th>Availability</th>
+                            <th class="Amount">Unit Price (LKR)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="parts_tableBody"></tbody>
+                </table>
             </div>
         </section>
     </main>
