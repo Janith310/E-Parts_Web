@@ -9,6 +9,18 @@ CREATE TABLE vehicles(
     engine_code VARCHAR(50) NOT NULL,
     year_from SMALLINT UNSIGNED NOT NULL,
     year_to SMALLINT UNSIGNED NOT NULL,
-    INDEX idx_chassis(chassis_code,
+    INDEX idx_chassis(chassis_code),
     INDEX idx_make_model(MAKE, MODEL),
+)ENGINE=InnoDB;
+
+CREATE TABLE parts(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    part_number VARCHAR(50) NOT NULL UNIQUE,
+    part_name VARCHAR(50) NOT NULL,
+    category ENUM('Engine', 'Brakes', 'Suspension', 'Electrical', 'Filters', 'Cooling', 'Drivetrain') NOT NULL,
+    brand VARCHAR(50) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    stock_qty INT NOT NULL DEFAULT 0,
+    INDEX idx_part_num(part_number),
+    INDEX idx_category(category),
 )ENGINE=InnoDB;
