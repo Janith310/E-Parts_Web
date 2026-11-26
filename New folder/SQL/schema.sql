@@ -24,3 +24,13 @@ CREATE TABLE parts(
     INDEX idx_part_num(part_number),
     INDEX idx_category(category),
 )ENGINE=InnoDB;
+
+CREATE TABLE part_fitment(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    part_id INT NOT NULL,
+    vehicle_id INT NOT NULL,
+    fitment_notes VARCHAR(150) DEFAULT 'Direct OEM fit',
+    FOREIGN KEY(part_id) REFERENCES parts(id) ON DELETE CASCADE,
+    FOREIGN KEY(vehicle_id) REFERENCES vehicles(id) ON DELETE CASCADE,
+    UNIQUE KEY unique_fitment(part_id, vehicle_id)
+)ENGINE=InnoDB;
