@@ -1,2 +1,14 @@
 CREATE DATABASE IF NOT EXISTS spare_parts_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE spare_parts_db;
+
+CREATE TABLE vehicles(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    make VARCHAR(50) NOT NULL,
+    model VARCHAR(50) NOT NULL,
+    chassis_code VARCHAR(50) NOT NULL,
+    engine_code VARCHAR(50) NOT NULL,
+    year_from SMALLINT UNSIGNED NOT NULL,
+    year_to SMALLINT UNSIGNED NOT NULL,
+    INDEX idx_chassis(chassis_code,
+    INDEX idx_make_model(MAKE, MODEL),
+)ENGINE=InnoDB;
