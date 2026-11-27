@@ -34,3 +34,28 @@ CREATE TABLE part_fitment (
     FOREIGN KEY (vehicle_id) REFERENCES vehicles(id) ON DELETE CASCADE,
     UNIQUE KEY unique_fitment (part_id, vehicle_id)
 ) ENGINE=InnoDB;
+
+INSERT INTO vehicles(make, model, chassis_code, engine_code, year_from, year_to) VALUES
+('Nissan', 'Sunny', 'FB15', 'QG15DE', 1998, 2004),
+('Nissan', 'Sunny', 'SB13', 'CD17', 1990, 1994),
+('Nissan', 'Caravan', 'VRGE24', 'TD27', 1986, 2001),
+('Daihatsu', 'Rugger', 'F75', 'DL2.8', 1984, 1993),
+('Toyota', 'Hiace', 'LH50', 'L', 1983, 1988);
+
+INSERT INTO parts(part_number, part_name, category, brand, price, stock_qty) VALUES
+('15208-65F0A', 'Spin-On Engine Oil Filter', 'Filters', 'Nissan Genuine', 2450.00, 18),
+('41060-4M490', 'Front Disc Brake Pad Set', 'Brakes', 'Akebono', 8900.00, 7),
+('54500-4M400', 'Front Lower Control Arm (RH)', 'Suspension', '555 Japan', 14500.00, 4),
+('16546-V0100', 'Air Filter Element', 'Filters', 'Sakura', 2100.00, 25),
+('23300-2J201', 'Starter Motor Assembly 12V', 'Electrical', 'Denso', 32000.00, 2),
+('17801-87604', 'Heavy Duty Air Cleaner Element', 'Filters', 'VIC Japan', 3600.00, 9);
+
+INSERT INTO part_fitment (part_id, vehicle_id, fitment_notes) VALUES
+(1, 1, 'Fits QG13DE / QG15DE / QG18DE'),
+(1, 5, 'Cross-compatible thread M20x1.5'),
+(2, 1, '2WD Sedan models only'),
+(3, 1, 'Includes ball joint & bushings'),
+(4, 1, 'Standard rectangular box'),
+(4, 3, 'Fits E24 petrol/diesel air box'),
+(5, 3, 'TD27 / TD25 9-Tooth Pinion'),
+(6, 4, 'Fits F70 / F75 2.8L Diesel');
