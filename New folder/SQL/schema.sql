@@ -34,3 +34,10 @@ CREATE TABLE part_fitment (
     FOREIGN KEY (vehicle_id) REFERENCES vehicles(id) ON DELETE CASCADE,
     UNIQUE KEY unique_fitment (part_id, vehicle_id)
 ) ENGINE=InnoDB;
+
+INSERT INTO vehicles(make, model, chassis_code, engine_code, year_from, year_to) VALUES
+('Nissan', 'Sunny', 'FB15', 'QG15DE', 1998, 2004),
+('Nissan', 'Sunny', 'SB13', 'CD17', 1990, 1994),
+('Nissan', 'Caravan', 'VRGE24', 'TD27', 1986, 2001),
+('Daihatsu', 'Rugger', 'F75', 'DL2.8', 1984, 1993),
+('Toyota', 'Hiace', 'LH50', 'L', 1983, 1988);
