@@ -70,7 +70,6 @@ try{
                 break;
             }
 
-            // Fetch vehicle header details
             $vStmt = $pdo->prepare("SELECT * FROM vehicles WHERE id = :id");
             $vStmt->execute([':id' => $vehicleId]);
             $vehicle = $vStmt->fetch();
@@ -81,7 +80,6 @@ try{
                 break;
             }
 
-            // Fetch matching parts
             $sql = "
                 SELECT 
                     p.id,
@@ -114,5 +112,13 @@ try{
                 'parts'   => $pStmt->fetchAll()
             ]);
             break;
+
+        default:
+        http_response_code(400);
+        echo json_encode(['status'=>'error', 'message'=>'Invalid API action']);
     }
+
+} catch (Throwable $e) {
+    http_response_code(500);
+    echo json_encode(['status' => 'error', 'message' => 'Server error: ' . $e->getMessage()]);
 }
