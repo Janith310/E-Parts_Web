@@ -20,5 +20,18 @@ try{
             $stmt->execute([':make' => $make]);
             echo json_encode(['status' => 'success', 'data' => $stmt->fetchAll(PDO::FETCH_COLUMN)]);
             break;
+
+        case 'chassis':
+            $make  = trim($_GET['make'] ?? '');
+            $model = trim($_GET['model'] ?? '');
+            $stmt  = $pdo->prepare("
+                SELECT id, make, model, chassis_code, engine_code, year_from, year_to 
+                FROM vehicles 
+                WHERE make = :make AND model = :model 
+                ORDER BY year_from DESC, chassis_code ASC
+            ");
+            $stmt->execute([':make' => $make, ':model' => $model]);
+            echo json_encode(['status' => 'success', 'data' => $stmt->fetchAll()]);
+            break;
     }
 }
