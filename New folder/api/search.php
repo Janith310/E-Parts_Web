@@ -59,5 +59,60 @@ try{
             ]);
             echo json_encode(['status' => 'success', 'data' => $stmt->fetchAll()]);
             break;
+
+        case 'parts':
+            $vehicleId = (int) ($_GET['vehicle_id'] ?? 0);
+            $category  = trim($_GET['category'] ?? 'All');
+
+            if ($vehicleId <= 0) {
+                http_response_code(400);
+                echo json_encode(['status' => 'error', 'message' => 'Valid vehicle_id is required']);
+                break;
+            }
+
+            // Fetch vehicle header details
+            $vStmt = $pdo->prepare("SELECT * FROM vehicles WHERE id = :id");
+            $vStmt->execute([':id' => $vehicleId]);
+            $vehicle = $vStmt->fetch();
+
+            if (!$vehicle) {
+                http_response_code(404);
+                echo json_encode(['status' => 'error', 'message' => 'Vehicle not found']);
+                break;
+            }
+
+            // Fetch matching parts
+            $sql = "
+                SELECT 
+                    p.id,
+                    p.part_number,
+                    p.name,
+                    p.category,
+                    p.brand,
+                    p.price,
+                    p.stock_qty,
+                    pf.fitment_notes
+                FROM part_fitment pf
+                INNER JOIN parts p ON pf.part_id = p.id
+                WHERE pf.vehicle_id = :vehicle_id
+            ";
+            $params = [':vehicle_id' => $vehicleId];
+
+            if ($category !== '' && $category !== 'All') {
+                $sql .= " AND p.category = :category";
+                $params[':category'] = $category;
+            }
+
+            $sql .= " ORDER BY p.category ASC, p.name ASC";
+
+            $pStmt = $pdo->prepare($sql);
+            $pStmt->execute($params);
+
+            echo json_encode([
+                'status'  => 'success',
+                'vehicle' => $vehicle,
+                'parts'   => $pStmt->fetchAll()
+            ]);
+            break;
     }
 }
