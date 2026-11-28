@@ -9,11 +9,16 @@ $action=$_GET['action']??'';
 
 try{
     switch($action){
-        case 'makes';
-        $stmt=$pdo->query("SELECT DISTINCT make FROM vehicles ORDER BY make ASC");
-        exho json_encode(['status'=>'success', 'data'=>$stmt->fetchAll(PDO::FETCH_COLUMN)]);
-        break;
+        case 'makes':
+            $stmt=$pdo->query("SELECT DISTINCT make FROM vehicles ORDER BY make ASC");
+            echo json_encode(['status' => 'success', 'data' => $stmt->fetchAll(PDO::FETCH_COLUMN)]);
+            break;
 
-        
+        case 'models':
+            $make=trim($_GET['make']??'');
+            $stmt = $pdo->prepare("SELECT DISTINCT model FROM vehicles WHERE make = :make ORDER BY model ASC");
+            $stmt->execute([':make' => $make]);
+            echo json_encode(['status' => 'success', 'data' => $stmt->fetchAll(PDO::FETCH_COLUMN)]);
+            break;
     }
 }
